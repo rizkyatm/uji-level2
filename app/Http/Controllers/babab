@@ -1,0 +1,17 @@
+    public function psiswa(){
+        $data = Siswa::all();
+        return view('pelanggaransiswa',compact('data'));
+    }
+
+
+    use HasFactory;
+
+protected $table = 'pelanggaran_siswas';
+protected $guarded = [];
+
+$table->id();
+            $table->unsignedBigInteger('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('restrict');
+            $table->unsignedBigInteger('pelanggaran_id');
+            $table->foreign('pelanggaran_id')->references('id')->on('pelanggarans')->onDelete('restrict');
+            $table->timestamps();
